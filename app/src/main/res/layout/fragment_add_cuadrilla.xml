@@ -31,12 +31,21 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/editTextNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="nombre"
+            android:inputType="textPersonName" />
+
+        <EditText
             android:id="@+id/editTextClasificacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="clasificaciòn"
+            android:hint="clasificación"
             android:inputType="textPersonName" />
 
         <EditText

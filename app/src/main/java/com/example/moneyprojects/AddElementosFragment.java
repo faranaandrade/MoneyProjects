@@ -5,6 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
+
+import com.example.moneyprojects.database.Queries;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
@@ -41,7 +44,7 @@ public class AddElementosFragment extends DialogFragment {
         addCuadrillaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                elementosManager.addCuadrilla();
+                elementosManager.addCuadrilla(v);
                 dismiss();
             }
         });
@@ -50,7 +53,7 @@ public class AddElementosFragment extends DialogFragment {
         addGruaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                elementosManager.addGrua();
+                elementosManager.addGrua(v);
                 dismiss();
             }
         });

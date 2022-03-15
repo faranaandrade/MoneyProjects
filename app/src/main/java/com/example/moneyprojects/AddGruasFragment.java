@@ -5,6 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+
+import com.example.moneyprojects.beans.Elementos;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
@@ -41,7 +44,15 @@ public class AddGruasFragment extends DialogFragment {
         addCuadrillaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                manager.add();
+                EditText costo = view.findViewById(R.id.editTextCostoSemanalGrua);
+                EditText nombre = view.findViewById(R.id.editTextNombreGrua);
+                EditText clasificacion = view.findViewById(R.id.editTextClasificacionGrua);
+                Elementos elementos = new Elementos();
+                elementos.setName(nombre.getText().toString());
+                elementos.setClasificacion(clasificacion.getText().toString());
+                elementos.setCosto(Double.parseDouble(costo.getText().toString()));
+                elementos.setTipo(Elementos.GRUA);
+                manager.add(elementos);
                 dismiss();
             }
         });
@@ -50,7 +61,7 @@ public class AddGruasFragment extends DialogFragment {
         addGruaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                manager.delete();
+                manager.delete(0l);
                 dismiss();
             }
         });

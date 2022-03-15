@@ -5,6 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Switch;
+
+import com.example.moneyprojects.beans.Elementos;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
@@ -41,7 +45,21 @@ public class AddCuadrillaFragment extends DialogFragment {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                manager.add();
+                EditText costo = view.findViewById(R.id.editTextCostoSemanal);
+                EditText nombre = view.findViewById(R.id.editTextNombre);
+                EditText clasificacion = view.findViewById(R.id.editTextClasificacion);
+                Switch nomina = view.findViewById(R.id.switchNomina);
+                Elementos elementos = new Elementos();
+                elementos.setName(nombre.getText().toString());
+                elementos.setClasificacion(clasificacion.getText().toString());
+                elementos.setCosto(Double.parseDouble(costo.getText().toString()));
+                elementos.setTipo(Elementos.CUADRILLA);
+                if (nomina.isChecked()) {
+                    elementos.setNomina(Elementos.NOMINA);
+                } else {
+                    elementos.setNomina(Elementos.DESTAJO);
+                }
+                manager.add(elementos);
                 dismiss();
             }
         });
@@ -50,7 +68,7 @@ public class AddCuadrillaFragment extends DialogFragment {
         eliminarCuadrillaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                manager.delete();
+                manager.delete(0l);
                 dismiss();
             }
         });
