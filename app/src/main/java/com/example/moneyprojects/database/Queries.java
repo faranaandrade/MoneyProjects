@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.moneyprojects.beans.Elementos;
+import com.example.moneyprojects.beans.Obras;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class Queries {
     private SQLiteDatabase sqLiteDatabase;
 
     public Queries(final Context context) {
-        DataBase dataBase = new DataBase(context, DataBase.SCHEMA, null, 5);
+        DataBase dataBase = new DataBase(context, DataBase.SCHEMA, null, 9);
         sqLiteDatabase = dataBase.getWritableDatabase();
     }
 
@@ -44,6 +45,28 @@ public class Queries {
         return select("SELECT * FROM " + DataBase.ELEMENTOS_TABLE + " WHERE " + DataBase.TIPO_FIELD + " = ? ", newItem, DataBase.CUADRILLA_TIPO);
     }
 
+    public List<Obras> getAllObrasSinTerminar() {
+        NewItem<Obras> newItem = new NewItem<Obras>() {
+
+            @Override
+            public Obras instance(Cursor cursor) {
+                return new Obras(cursor);
+            }
+        };
+        return select("SELECT * FROM " + DataBase.OBRAS_TABLE + " WHERE " + DataBase.FINISHED_FIELD + " = ? ", newItem, "0");
+    }
+
+    public List<Obras> getAllObrasTerminadas() {
+        NewItem<Obras> newItem = new NewItem<Obras>() {
+
+            @Override
+            public Obras instance(Cursor cursor) {
+                return new Obras(cursor);
+            }
+        };
+        return select("SELECT * FROM " + DataBase.OBRAS_TABLE + " WHERE " + DataBase.FINISHED_FIELD + " = ? ", newItem, "1");
+    }
+
     @NonNull
     private <T> List<T> select(final String sql, NewItem<T> newItem, final String... args) {
         Cursor cursor = sqLiteDatabase.rawQuery(sql, args);
@@ -58,12 +81,17 @@ public class Queries {
 
     public void saveOrUpdateElementos(final Elementos item) {
         if (item.getId() == null || item.getId() == 0) {
-            if(item.getName() == null){
-               item.setName("E-" + UUID.randomUUID().toString());
-            }
             saveElementos(item);
         } else {
             updateElementos(item);
+        }
+    }
+
+    public void saveOrUpdateObras(final Obras item) {
+        if (item.getId() == null || item.getId() == 0) {
+            saveObras(item);
+        } else {
+            updateObras(item);
         }
     }
 
@@ -71,6 +99,12 @@ public class Queries {
         String[] ids = new String[1];
         ids[0] = item.getId().toString();
         sqLiteDatabase.update(DataBase.ELEMENTOS_TABLE, fillElementosContentValues(item), "ID = ?", ids);
+    }
+
+    private void updateObras(final Obras item) {
+        String[] ids = new String[1];
+        ids[0] = item.getId().toString();
+        sqLiteDatabase.update(DataBase.OBRAS_TABLE, fillObrasContentValues(item), "ID = ?", ids);
     }
 
     @NonNull
@@ -83,9 +117,26 @@ public class Queries {
         return contentValues;
     }
 
+    @NonNull
+    private ContentValues fillObrasContentValues(final Obras item) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DataBase.NAME_FIELD, item.getName());
+        contentValues.put(DataBase.DOCUMENTO_FIELD, item.getDocumento());
+        contentValues.put(DataBase.FINISHED_FIELD, item.getTerminada());
+        return contentValues;
+    }
+
     private void saveElementos(final Elementos item) {
         if (sqLiteDatabase != null) {
-            sqLiteDatabase.insert(DataBase.ELEMENTOS_TABLE, null, fillElementosContentValues(item));
+            Long id = sqLiteDatabase.insert(DataBase.ELEMENTOS_TABLE, null, fillElementosContentValues(item));
+            item.setId(id);
+        }
+    }
+
+    private void saveObras(final Obras item) {
+        if (sqLiteDatabase != null) {
+            Long id = sqLiteDatabase.insert(DataBase.OBRAS_TABLE, null, fillObrasContentValues(item));
+            item.setId(id);
         }
     }
 
@@ -104,11 +155,34 @@ public class Queries {
         return items.get(0);
     }
 
+    public Elementos getObra(final Integer id) {
+        NewItem<Elementos> newItem = new NewItem<Elementos>() {
+
+            @Override
+            public Elementos instance(Cursor cursor) {
+                return new Elementos(cursor);
+            }
+        };
+        List<Elementos> items = select("SELECT * FROM " + DataBase.OBRAS_TABLE + " WHERE " + DataBase.ID_FIELD + " = ?", newItem, id.toString());
+        if (items.size() == 0) {
+            return null;
+        }
+        return items.get(0);
+    }
+
     public void deleteElemento(final Integer id) {
         if (id != null) {
             String[] ids = new String[1];
             ids[0] = id.toString();
-            sqLiteDatabase.delete(DataBase.ELEMENTOS_TABLE, DataBase.NAME_FIELD + "=?", ids);
+            sqLiteDatabase.delete(DataBase.ELEMENTOS_TABLE, DataBase.ID_FIELD + "=?", ids);
+        }
+    }
+
+    public void deleteObras(final Integer id) {
+        if (id != null) {
+            String[] ids = new String[1];
+            ids[0] = id.toString();
+            sqLiteDatabase.delete(DataBase.OBRAS_TABLE, DataBase.ID_FIELD + "=?", ids);
         }
     }
 

@@ -9,19 +9,23 @@ import android.widget.EditText;
 import android.widget.Switch;
 
 import com.example.moneyprojects.beans.Elementos;
+import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 public class AddCuadrillaFragment extends DialogFragment {
 
+    private static Elementos elementEdit;
     private static CuadrillaManager manager;
 
     public AddCuadrillaFragment() {
 
     }
 
-    public static AddCuadrillaFragment newInstance(String title, CuadrillaManager cuadrillaManager) {
+    public static AddCuadrillaFragment newInstance(String title, Elementos elementEdit, CuadrillaManager cuadrillaManager) {
+        AddCuadrillaFragment.elementEdit = elementEdit;
+
         AddCuadrillaFragment.manager = cuadrillaManager;
         AddCuadrillaFragment frag = new AddCuadrillaFragment();
         Bundle args = new Bundle();
@@ -39,36 +43,57 @@ public class AddCuadrillaFragment extends DialogFragment {
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-
+        EditText costo = view.findViewById(R.id.editTextCostoSemanal);
+        EditText nombre = view.findViewById(R.id.editTextNombre);
+        EditText clasificacion = view.findViewById(R.id.editTextClasificacion);
+        Switch nomina = view.findViewById(R.id.switchNomina);
         Button okButton = view.findViewById(R.id.buttonAddCuadrilla);
+        Button eliminarCuadrillaButton = view.findViewById(R.id.eliminarCuadrilla);
+
+        if (elementEdit != null) {
+            costo.setText(elementEdit.getCosto().toString());
+            nombre.setText(elementEdit.getName());
+            clasificacion.setText(elementEdit.getClasificacion());
+            if (elementEdit.getNomina().intValue() == Elementos.NOMINA) {
+                nomina.setChecked(true);
+            }
+            okButton.setText("EDITAR");
+            eliminarCuadrillaButton.setVisibility(View.VISIBLE);
+        } else {
+            eliminarCuadrillaButton.setVisibility(View.GONE);
+        }
+
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText costo = view.findViewById(R.id.editTextCostoSemanal);
-                EditText nombre = view.findViewById(R.id.editTextNombre);
-                EditText clasificacion = view.findViewById(R.id.editTextClasificacion);
-                Switch nomina = view.findViewById(R.id.switchNomina);
-                Elementos elementos = new Elementos();
-                elementos.setName(nombre.getText().toString());
-                elementos.setClasificacion(clasificacion.getText().toString());
-                elementos.setCosto(Double.parseDouble(costo.getText().toString()));
-                elementos.setTipo(Elementos.CUADRILLA);
-                if (nomina.isChecked()) {
-                    elementos.setNomina(Elementos.NOMINA);
-                } else {
-                    elementos.setNomina(Elementos.DESTAJO);
+                if (elementEdit == null) {
+                    elementEdit = new Elementos();
                 }
-                manager.add(elementos);
-                dismiss();
+                elementEdit.setName(nombre.getText().toString());
+                elementEdit.setClasificacion(clasificacion.getText().toString());
+                if (!costo.getText().toString().isEmpty()) {
+                    elementEdit.setCosto(Double.parseDouble(costo.getText().toString()));
+                }
+                elementEdit.setTipo(Elementos.CUADRILLA);
+                if (nomina.isChecked()) {
+                    elementEdit.setNomina(Elementos.NOMINA);
+                } else {
+                    elementEdit.setNomina(Elementos.DESTAJO);
+                }
+                if (isValid(elementEdit)) {
+                    manager.add(elementEdit);
+                    dismiss();
+                } else {
+                    Snackbar.make(view, "Se necesitan datos completos", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                }
             }
         });
 
-        Button eliminarCuadrillaButton = view.findViewById(R.id.eliminarCuadrilla);
+
         eliminarCuadrillaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                manager.delete(0l);
+                manager.delete(elementEdit.getId());
                 dismiss();
             }
         });
@@ -76,6 +101,12 @@ public class AddCuadrillaFragment extends DialogFragment {
         String title = getArguments().getString("title", "Enter Name");
         getDialog().setTitle(title);
         //getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+    }
+
+    private boolean isValid(Elementos elementos) {
+        return elementos.getName() != null && !elementos.getName().isEmpty() &&
+                elementos.getCosto() != null && elementos.getCosto().doubleValue() > 0 &&
+                elementos.getClasificacion() != null && !elementos.getClasificacion().isEmpty();
     }
 
 }

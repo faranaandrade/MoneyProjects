@@ -19,12 +19,6 @@ public class CalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
 
         final Queries queries = new Queries(this);
-        List<Elementos> allGruas = queries.getAllGruas();
 
-        RecyclerView listView2 = findViewById(R.id.recyclerViewCalendar);
-        GruaAdapter adapter = new GruaAdapter(allGruas);
-        listView2.setAdapter(adapter);
-        listView2.setLayoutManager(new LinearLayoutManager(this));
-        adapter.notifyDataSetChanged();
     }
 }

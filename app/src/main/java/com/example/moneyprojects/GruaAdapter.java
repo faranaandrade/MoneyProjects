@@ -19,9 +19,10 @@ import androidx.recyclerview.widget.RecyclerView;
 public class GruaAdapter extends RecyclerView.Adapter<GruaAdapter.ViewHolder> {
 
     private List<Elementos> elementosList;
+    private ShowEdit<Elementos> showEdit;
 
-    public GruaAdapter(List<Elementos> elementosList) {
-        System.out.println("tamaño:" + elementosList.size());
+    public GruaAdapter(List<Elementos> elementosList, ShowEdit<Elementos> showEdit) {
+        this.showEdit = showEdit;
         this.elementosList = elementosList;
     }
 
@@ -32,6 +33,14 @@ public class GruaAdapter extends RecyclerView.Adapter<GruaAdapter.ViewHolder> {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View listItem = layoutInflater.inflate(R.layout.grua_layout, parent, false);
         ViewHolder viewHolder = new ViewHolder(listItem);
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // get the position of this Vh
+                int position = viewHolder.getAdapterPosition();
+                showEdit.show(elementosList.get(position));
+            }
+        });
         return viewHolder;
     }
 

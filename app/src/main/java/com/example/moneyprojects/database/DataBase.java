@@ -16,6 +16,7 @@ public class DataBase extends SQLiteOpenHelper {
     public static final String NAME_FIELD = "name";
     public static final String TIPO_FIELD = "tipo";
     public static final String DOCUMENTO_FIELD = "documento";
+    public static final String FINISHED_FIELD = "terminada";
     public static final String OBRA_FIELD = "obra";
     public static final String ELEMENTO_FIELD = "elemento";
     public static final String FECHA_FIELD = "fecha";
@@ -27,7 +28,7 @@ public class DataBase extends SQLiteOpenHelper {
 
     String elementosTable = "CREATE TABLE " + ELEMENTOS_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME_FIELD + " TEXT, " + CLASIFICACION_FIELD + " TEXT, " + COSTO_FIELD + " NUMERIC, " + TIPO_FIELD + " TEXT, " + NOMINA_FIELD + " NUMERIC)";
 
-    String obrasTable = "CREATE TABLE " + OBRAS_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME_FIELD + " TEXT, " + DOCUMENTO_FIELD + " TEXT)";
+    String obrasTable = "CREATE TABLE " + OBRAS_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME_FIELD + " TEXT, " + DOCUMENTO_FIELD + " TEXT, " + FINISHED_FIELD + " NUMERIC)";
 
     String dateTable  = "CREATE TABLE " + DATE_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " + OBRA_FIELD + " INTEGER, " + ELEMENTO_FIELD + " INTEGER, " + FECHA_FIELD + " NUMERIC)";
 
@@ -44,9 +45,15 @@ public class DataBase extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        System.out.println("old" + oldVersion);
+        System.out.println("new" + newVersion);
+        db.execSQL("DROP TABLE IF EXISTS " + OBRAS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + ELEMENTOS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + DATE_TABLE);
+        onCreate(db);
         switch (oldVersion){
             case 1:
-                //hola
+                break;
         }
     }
 }

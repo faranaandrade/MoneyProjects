@@ -8,19 +8,23 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.moneyprojects.beans.Elementos;
+import com.example.moneyprojects.beans.Obras;
+import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 public class AddGruasFragment extends DialogFragment {
 
+    private static Elementos elementEdit;
     private static GruasManager manager;
 
     public AddGruasFragment() {
 
     }
 
-    public static AddGruasFragment newInstance(String title, GruasManager gruasManager) {
+    public static AddGruasFragment newInstance(String title, Elementos elementEdit, GruasManager gruasManager) {
+        AddGruasFragment.elementEdit = elementEdit;
         AddGruasFragment.manager = gruasManager;
         AddGruasFragment frag = new AddGruasFragment();
         Bundle args = new Bundle();
@@ -38,30 +42,50 @@ public class AddGruasFragment extends DialogFragment {
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        EditText costo = view.findViewById(R.id.editTextCostoSemanalGrua);
+        EditText nombre = view.findViewById(R.id.editTextNombreGrua);
+        EditText clasificacion = view.findViewById(R.id.editTextClasificacionGrua);
+        Button okButton = view.findViewById(R.id.buttonAddGrua);
+        Button eliminarGruaButton = view.findViewById(R.id.eliminarGrua);
+
+        if (elementEdit != null) {
+            costo.setText(elementEdit.getCosto().toString());
+            nombre.setText(elementEdit.getName());
+            clasificacion.setText(elementEdit.getClasificacion());
+            okButton.setText("EDITAR");
+            eliminarGruaButton.setVisibility(View.VISIBLE);
+        } else {
+            eliminarGruaButton.setVisibility(View.GONE);
+        }
 
 
-        Button addCuadrillaButton = view.findViewById(R.id.buttonAddGrua);
-        addCuadrillaButton.setOnClickListener(new View.OnClickListener() {
+        okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText costo = view.findViewById(R.id.editTextCostoSemanalGrua);
-                EditText nombre = view.findViewById(R.id.editTextNombreGrua);
-                EditText clasificacion = view.findViewById(R.id.editTextClasificacionGrua);
-                Elementos elementos = new Elementos();
-                elementos.setName(nombre.getText().toString());
-                elementos.setClasificacion(clasificacion.getText().toString());
-                elementos.setCosto(Double.parseDouble(costo.getText().toString()));
-                elementos.setTipo(Elementos.GRUA);
-                manager.add(elementos);
-                dismiss();
+                if (elementEdit == null) {
+                    elementEdit = new Elementos();
+                }
+                elementEdit.setName(nombre.getText().toString());
+                elementEdit.setClasificacion(clasificacion.getText().toString());
+                if (!costo.getText().toString().isEmpty()) {
+                    elementEdit.setCosto(Double.parseDouble(costo.getText().toString()));
+                }
+                elementEdit.setTipo(Elementos.GRUA);
+
+                if (isValid(elementEdit)) {
+                    manager.add(elementEdit);
+                    dismiss();
+                } else {
+                    Snackbar.make(view, "Se necesitan datos completos", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                }
             }
         });
 
-        Button addGruaButton = view.findViewById(R.id.eliminarGrua);
-        addGruaButton.setOnClickListener(new View.OnClickListener() {
+
+        eliminarGruaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                manager.delete(0l);
+                manager.delete(elementEdit.getId());
                 dismiss();
             }
         });
@@ -69,6 +93,12 @@ public class AddGruasFragment extends DialogFragment {
         String title = getArguments().getString("title", "Enter Name");
         getDialog().setTitle(title);
         //getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+    }
+
+    private boolean isValid(Elementos elementos) {
+        return elementos.getName() != null && !elementos.getName().isEmpty() &&
+                elementos.getCosto() != null && elementos.getCosto().doubleValue() > 0 &&
+                elementos.getClasificacion() != null && !elementos.getClasificacion().isEmpty();
     }
 
 }

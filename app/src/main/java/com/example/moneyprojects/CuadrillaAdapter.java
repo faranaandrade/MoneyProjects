@@ -17,9 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class CuadrillaAdapter extends RecyclerView.Adapter<CuadrillaAdapter.ViewHolder> {
 
     private List<Elementos> elementosList;
+    private ShowEdit<Elementos> showEdit;
 
-    public CuadrillaAdapter(List<Elementos> elementosList) {
+    public CuadrillaAdapter(List<Elementos> elementosList, ShowEdit<Elementos> showEdit) {
         this.elementosList = elementosList;
+        this.showEdit = showEdit;
     }
 
     @NonNull
@@ -29,6 +31,14 @@ public class CuadrillaAdapter extends RecyclerView.Adapter<CuadrillaAdapter.View
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View listItem = layoutInflater.inflate(R.layout.cuadrilla_layout, parent, false);
         CuadrillaAdapter.ViewHolder viewHolder = new CuadrillaAdapter.ViewHolder(listItem);
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // get the position of this Vh
+                int position = viewHolder.getAdapterPosition();
+                showEdit.show(elementosList.get(position));
+            }
+        });
         return viewHolder;
     }
 

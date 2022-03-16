@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ObrasActivity"
     tools:showIn="@layout/app_bar_obras">
 
     <TextView
@@ -14,7 +15,8 @@
         android:layout_marginStart="14dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
-        android:text="OBRAS SIN TERMINAR"
+        android:text="OBRAS POR TERMINAR"
+
         android:textAllCaps="true"
         android:textColor="@color/teal_700"
         android:textSize="24sp"
@@ -23,24 +25,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/realList"
-        android:layout_width="0dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/obrasSinTerminarList"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCUADRILLA" />
 
-    <ListView
-        android:id="@+id/wantToPlayList"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 
     <TextView
         android:id="@+id/textView"
@@ -56,6 +51,18 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/realList" />
+        app:layout_constraintTop_toBottomOf="@+id/obrasSinTerminarList" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/obrasTerminadasList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
