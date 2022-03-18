@@ -2,7 +2,9 @@ package com.example.moneyprojects.beans;
 
 import android.database.Cursor;
 
-public class Elementos {
+import java.io.Serializable;
+
+public class Elementos implements NameGetter {
     public static final String GRUA = "GRUA";
     public static final int DESTAJO = 0;
     public static final int NOMINA = 1;

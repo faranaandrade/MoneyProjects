@@ -48,7 +48,7 @@ public class ElementosActivity extends AppCompatActivity {
 
                     @Override
                     public void delete(Long id) {
-                        queries.deleteElemento(id.intValue());
+                        queries.deleteAllReferenceAndElements(id.intValue());
                         allCuadrillas.remove(elementEdit);
                         cuadrillaAdapter.notifyDataSetChanged();
                     }
@@ -80,7 +80,7 @@ public class ElementosActivity extends AppCompatActivity {
 
                     @Override
                     public void delete(Long id) {
-                        queries.deleteElemento(id.intValue());
+                        queries.deleteAllReferenceAndElements(id.intValue());
                         allGruas.remove(elementEdit);
                         gruaAdapter.notifyDataSetChanged();
                     }

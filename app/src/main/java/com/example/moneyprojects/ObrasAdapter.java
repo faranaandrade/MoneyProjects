@@ -1,15 +1,11 @@
 package com.example.moneyprojects;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.moneyprojects.beans.Elementos;
 import com.example.moneyprojects.beans.Obras;
 
 import org.jetbrains.annotations.NotNull;

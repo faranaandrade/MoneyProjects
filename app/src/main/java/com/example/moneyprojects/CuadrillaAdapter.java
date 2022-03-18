@@ -69,7 +69,7 @@ public class CuadrillaAdapter extends RecyclerView.Adapter<CuadrillaAdapter.View
 
         public ViewHolder(View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.textViewName);
+            name = itemView.findViewById(R.id.textViewNameTipo);
             clasificacion = itemView.findViewById(R.id.textViewClasificacion);
             costo = itemView.findViewById(R.id.textViewCosto);
             pago = itemView.findViewById(R.id.textViewPago);

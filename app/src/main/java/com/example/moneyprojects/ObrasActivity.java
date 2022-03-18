@@ -76,7 +76,7 @@ public class ObrasActivity extends AppCompatActivity {
 
                     @Override
                     public void delete(Long id) {
-                        queries.deleteObras(id.intValue());
+                        queries.deleteAllReferenceAndObras(id.intValue());
                         if (obraEdit.getTerminada().intValue() == Obras.TERMINADA) {
                             allObrasTerminadas.remove(obraEdit);
                         } else {

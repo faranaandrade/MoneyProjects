@@ -9,22 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MoneyProjects">
+        <activity android:name=".ListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.moneyprojects.CalendarActivity" />
+        </activity>
         <activity android:name=".HoyActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.moneyprojects.MainActivity" />
         </activity>
-        <activity android:name=".CalendarActivity" >
+        <activity android:name=".CalendarActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.moneyprojects.MainActivity" />
         </activity>
-        <activity android:name=".ObrasActivity" >
+        <activity android:name=".ObrasActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.moneyprojects.MainActivity" />
         </activity>
-        <activity android:name=".ElementosActivity" >
+        <activity android:name=".ElementosActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.moneyprojects.MainActivity" />

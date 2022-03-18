@@ -16,38 +16,33 @@
             android:id="@+id/textViewNameTipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="20dp"
-            android:text="Fernando"
+            android:paddingLeft="24dp"
+
+            android:text="Tipo"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textViewClasificacion"
+            android:id="@+id/textViewNameClasificacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="20dp"
-            android:text="clasificacion1"
+            android:layout_weight="1"
+
+            android:paddingLeft="24dp"
+            android:text="Clasificacion"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textViewPago"
+            android:id="@+id/textViewNameObra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="N"
-            android:paddingRight="20dp"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:layout_weight="1"
 
-        <TextView
-            android:id="@+id/textViewCosto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$10.54"
+            android:paddingLeft="24dp"
+            android:text="obra"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24sp" />

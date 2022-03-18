@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ObrasActivity">
+    tools:context=".CalendarActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabObras"
+        android:id="@+id/fabCalendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
@@ -16,6 +16,6 @@
         app:backgroundTint="@color/teal_700"
         app:srcCompat="@android:drawable/ic_input_add" />
 
-    <include layout="@layout/content_obras" />
+    <include layout="@layout/content_calendar" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
