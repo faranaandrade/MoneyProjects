@@ -6,7 +6,7 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.example.moneyprojects"
+        applicationId "com.faaya.moneyprojects"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
