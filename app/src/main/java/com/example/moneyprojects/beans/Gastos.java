@@ -7,7 +7,7 @@ public class Gastos {
     private List<Calendar> calendars;
     private Elementos elementos;
 
-    public Gastos(Obras obras, List<Calendar> calendars, Elementos elementos){
+    public Gastos(Obras obras, List<Calendar> calendars, Elementos elementos) {
         this.obras = obras;
         this.calendars = calendars;
         this.elementos = elementos;

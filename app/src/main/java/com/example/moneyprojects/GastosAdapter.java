@@ -6,15 +6,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.moneyprojects.beans.Calendar;
-import com.example.moneyprojects.beans.Elementos;
-import com.example.moneyprojects.beans.FullCalendar;
 import com.example.moneyprojects.beans.Gastos;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,7 +43,7 @@ public class GastosAdapter extends RecyclerView.Adapter<GastosAdapter.ViewHolder
 
     private Double getTotalGasto(List<Calendar> calendarList) {
         Double total = new Double(0);
-        for (Calendar calendar: calendarList) {
+        for (Calendar calendar : calendarList) {
             total += calendar.getCosto();
         }
         return total;

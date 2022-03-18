@@ -1,9 +1,5 @@
 package com.example.moneyprojects;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -19,6 +15,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class GastosActivity extends AppCompatActivity {
 
@@ -57,14 +57,14 @@ public class GastosActivity extends AppCompatActivity {
         Map<Long, List<Calendar>> map = new HashMap<Long, List<Calendar>>();
         for (Calendar calendar : allCalendarByObra) {
             total += calendar.getCosto();
-            if (!map.containsKey(calendar.getElemento())){
+            if (!map.containsKey(calendar.getElemento())) {
                 map.put(calendar.getElemento(), new ArrayList<>());
             }
             map.get(calendar.getElemento()).add(calendar);
         }
 
         gastos = new ArrayList<>();
-        for (Map.Entry<Long, List<Calendar>> entry : map.entrySet()){
+        for (Map.Entry<Long, List<Calendar>> entry : map.entrySet()) {
             Elementos elemento = queries.getElemento(entry.getKey());
             gastos.add(new Gastos(obras, entry.getValue(), elemento));
         }
