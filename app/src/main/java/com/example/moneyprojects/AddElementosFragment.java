@@ -5,9 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
-
-import com.example.moneyprojects.database.Queries;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
@@ -37,7 +34,6 @@ public class AddElementosFragment extends DialogFragment {
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
 
         Button addCuadrillaButton = view.findViewById(R.id.addCuadrilla);

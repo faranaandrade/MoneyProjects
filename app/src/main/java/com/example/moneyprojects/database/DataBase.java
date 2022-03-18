@@ -30,9 +30,9 @@ public class DataBase extends SQLiteOpenHelper {
 
     String obrasTable = "CREATE TABLE " + OBRAS_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME_FIELD + " TEXT, " + DOCUMENTO_FIELD + " TEXT, " + FINISHED_FIELD + " NUMERIC)";
 
-    String dateTable  = "CREATE TABLE " + CALENDAR_DATE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " + OBRA_FIELD + " INTEGER, " + ELEMENTO_FIELD + " INTEGER, " + FECHA_FIELD + " NUMERIC, " + COSTO_FIELD + " NUMERIC)";
+    String dateTable = "CREATE TABLE " + CALENDAR_DATE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " + OBRA_FIELD + " INTEGER, " + ELEMENTO_FIELD + " INTEGER, " + FECHA_FIELD + " NUMERIC, " + COSTO_FIELD + " NUMERIC)";
 
-    public DataBase(Context context,String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public DataBase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
@@ -51,7 +51,7 @@ public class DataBase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + ELEMENTOS_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + CALENDAR_DATE);
         onCreate(db);
-        switch (oldVersion){
+        switch (oldVersion) {
             case 1:
                 break;
         }

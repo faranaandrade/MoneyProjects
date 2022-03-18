@@ -1,20 +1,17 @@
 package com.example.moneyprojects;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 
 import com.example.moneyprojects.beans.Elementos;
-import com.example.moneyprojects.beans.Obras;
 import com.example.moneyprojects.database.Queries;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ElementosActivity extends AppCompatActivity {
 
@@ -53,7 +50,7 @@ public class ElementosActivity extends AppCompatActivity {
                         cuadrillaAdapter.notifyDataSetChanged();
                     }
                 };
-                AddCuadrillaFragment.newInstance("", elementEdit,cuadrillaManager).show(getSupportFragmentManager(), "fragment_edit_cuadrilla");
+                AddCuadrillaFragment.newInstance("", elementEdit, cuadrillaManager).show(getSupportFragmentManager(), "fragment_edit_cuadrilla");
             }
         };
         cuadrillaAdapter = new CuadrillaAdapter(allCuadrillas, showEditCuadrilla);
@@ -98,7 +95,7 @@ public class ElementosActivity extends AppCompatActivity {
             public void onClick(View view) {
                 System.out.println("onlciker");
 
-                ElementosManager elementosManager = new ElementosManager(){
+                ElementosManager elementosManager = new ElementosManager() {
 
                     @Override
                     public void addCuadrilla(View v) {

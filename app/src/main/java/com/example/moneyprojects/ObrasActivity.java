@@ -1,22 +1,21 @@
 package com.example.moneyprojects;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.moneyprojects.beans.Elementos;
 import com.example.moneyprojects.beans.Obras;
 import com.example.moneyprojects.database.Queries;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ObrasActivity extends AppCompatActivity {
 
@@ -37,8 +36,8 @@ public class ObrasActivity extends AppCompatActivity {
             @Override
             public void go(String url) {
                 try {
-                    Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse( url ) );
-                    startActivity( browse );
+                    Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(browse);
                 } catch (ActivityNotFoundException e) {
                     View view = findViewById(android.R.id.content);
                     Snackbar.make(view, "No es una URL válida", Snackbar.LENGTH_LONG).setAction("Action", null).show();
@@ -48,7 +47,6 @@ public class ObrasActivity extends AppCompatActivity {
 
         RecyclerView listViewCuadrilla = findViewById(R.id.obrasSinTerminarList);
         allObrasSinTerminar = queries.getAllObrasSinTerminar();
-
 
 
         RecyclerView listViewGruas = findViewById(R.id.obrasTerminadasList);
@@ -98,11 +96,11 @@ public class ObrasActivity extends AppCompatActivity {
             }
         });
 
-        obrasTerminadasAdapter = new ObrasAdapter(allObrasTerminadas, showEdit,webGetter);
+        obrasTerminadasAdapter = new ObrasAdapter(allObrasTerminadas, showEdit, webGetter);
         listViewGruas.setAdapter(obrasTerminadasAdapter);
         listViewGruas.setLayoutManager(new LinearLayoutManager(this));
 
-         obrasSinTerminarAdapter = new ObrasAdapter(allObrasSinTerminar, showEdit,webGetter);
+        obrasSinTerminarAdapter = new ObrasAdapter(allObrasSinTerminar, showEdit, webGetter);
         listViewCuadrilla.setAdapter(obrasSinTerminarAdapter);
         listViewCuadrilla.setLayoutManager(new LinearLayoutManager(this));
     }

@@ -1,6 +1,5 @@
 package com.example.moneyprojects;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,13 +7,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Switch;
 import android.widget.TextView;
 
-import com.example.moneyprojects.beans.Calendar;
 import com.example.moneyprojects.beans.Elementos;
 import com.example.moneyprojects.beans.FullCalendar;
-import com.example.moneyprojects.beans.Obras;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.Nullable;
@@ -25,11 +21,11 @@ public class AddCalendarFragment extends DialogFragment {
     private static FullCalendar calendarEdit;
     private static CalendarManager manager;
     private static Long date;
-    ImageButton obraButton ;
-    ImageButton elementoButton ;
-    EditText costoEditText ;
-    Button okButton ;
-    Button eliminarObraButton ;
+    ImageButton obraButton;
+    ImageButton elementoButton;
+    EditText costoEditText;
+    Button okButton;
+    Button eliminarObraButton;
     TextView textViewObra;
     TextView textViewElemento;
     TextView textViewCosto;
@@ -60,15 +56,15 @@ public class AddCalendarFragment extends DialogFragment {
 
         textViewCosto = view.findViewById(R.id.textViewCosto);
 
-         obraButton = view.findViewById(R.id.imageButtonObras);
-         elementoButton = view.findViewById(R.id.imageButtonElementos);
+        obraButton = view.findViewById(R.id.imageButtonObras);
+        elementoButton = view.findViewById(R.id.imageButtonElementos);
 
         textViewElemento = view.findViewById(R.id.textViewElemento);
         textViewObra = view.findViewById(R.id.textViewObra);
 
-         costoEditText = view.findViewById(R.id.editTextCCosto);
-         okButton = view.findViewById(R.id.buttonAddObra);
-         eliminarObraButton = view.findViewById(R.id.eliminarObra);
+        costoEditText = view.findViewById(R.id.editTextCCosto);
+        okButton = view.findViewById(R.id.buttonAddObra);
+        eliminarObraButton = view.findViewById(R.id.eliminarObra);
 
         if (calendarEdit != null) {
             if (calendarEdit.getCosto() != null) {
@@ -77,7 +73,7 @@ public class AddCalendarFragment extends DialogFragment {
             if (calendarEdit.getId() == null && calendarEdit.getElemento() != null) {
                 Elementos elemento = calendarEdit.getElemento();
                 if (elemento.getTipo().equals(Elementos.CUADRILLA)) {
-                    Double costo = elemento.getCosto()/5;
+                    Double costo = elemento.getCosto() / 5;
                     costoEditText.setText(costo.toString());
                 } else {
                     costoEditText.setText(elemento.getCosto().toString());

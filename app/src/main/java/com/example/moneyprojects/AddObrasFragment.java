@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 
-import com.example.moneyprojects.beans.Elementos;
 import com.example.moneyprojects.beans.Obras;
 import com.google.android.material.snackbar.Snackbar;
 

@@ -1,9 +1,5 @@
 package com.example.moneyprojects;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -11,12 +7,14 @@ import android.view.MenuItem;
 
 import com.example.moneyprojects.beans.Elementos;
 import com.example.moneyprojects.beans.FullCalendar;
-import com.example.moneyprojects.beans.NameGetter;
 import com.example.moneyprojects.beans.Obras;
 import com.example.moneyprojects.database.Queries;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -89,8 +87,8 @@ public class ListActivity extends AppCompatActivity {
 
     private void comeBack() {
         Intent intent = new Intent(ListActivity.this, CalendarActivity.class);
-        intent.putExtra(SHOW,true);
-        intent.putExtra(FULL_CALENDAR,fullCalendar);
+        intent.putExtra(SHOW, true);
+        intent.putExtra(FULL_CALENDAR, fullCalendar);
         intent.putExtra(DATE, date);
         startActivity(intent);
         finish();

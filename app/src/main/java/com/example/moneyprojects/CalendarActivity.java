@@ -1,13 +1,6 @@
 package com.example.moneyprojects;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -16,14 +9,17 @@ import android.widget.CalendarView;
 
 import com.example.moneyprojects.beans.Calendar;
 import com.example.moneyprojects.beans.FullCalendar;
-import com.example.moneyprojects.beans.Obras;
 import com.example.moneyprojects.database.Queries;
 import com.example.moneyprojects.utils.Utils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class CalendarActivity extends AppCompatActivity {
 
@@ -55,9 +51,8 @@ public class CalendarActivity extends AppCompatActivity {
         final Queries queries = new Queries(this);
 
 
-
         RecyclerView listViewCalendar = findViewById(R.id.calendarRecyclerView);
-        allCalendars = convert(queries,queries.getAllCalendarByDate(selectedCalendar));
+        allCalendars = convert(queries, queries.getAllCalendarByDate(selectedCalendar));
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -65,7 +60,7 @@ public class CalendarActivity extends AppCompatActivity {
                 selectedCalendar.set(year, mounth, day);
                 calendarView.setDate(selectedCalendar.getTimeInMillis());
                 allCalendars.clear();
-                allCalendars.addAll(convert(queries,queries.getAllCalendarByDate(selectedCalendar)));
+                allCalendars.addAll(convert(queries, queries.getAllCalendarByDate(selectedCalendar)));
                 calendarAdapter.notifyDataSetChanged();
             }
         });
@@ -93,7 +88,7 @@ public class CalendarActivity extends AppCompatActivity {
                     @Override
                     public void goObras(FullCalendar fullCalendar) {
                         Intent intent = new Intent(CalendarActivity.this, ListActivity.class);
-                        intent.putExtra(OBRAS,true);
+                        intent.putExtra(OBRAS, true);
                         intent.putExtra(FULL_CALENDAR, fullCalendar);
                         intent.putExtra(DATE, selectedCalendar);
                         startActivity(intent);
@@ -102,7 +97,7 @@ public class CalendarActivity extends AppCompatActivity {
                     @Override
                     public void goElementos(FullCalendar fullCalendar) {
                         Intent intent = new Intent(CalendarActivity.this, ListActivity.class);
-                        intent.putExtra(ELEMENTOS,true);
+                        intent.putExtra(ELEMENTOS, true);
                         intent.putExtra(FULL_CALENDAR, fullCalendar);
                         intent.putExtra(DATE, selectedCalendar);
                         startActivity(intent);
@@ -126,7 +121,7 @@ public class CalendarActivity extends AppCompatActivity {
 
 
         boolean show = false; // or other values
-        if(b != null)
+        if (b != null)
             show = b.getBoolean(SHOW, false);
 
         if (show) {
@@ -134,10 +129,10 @@ public class CalendarActivity extends AppCompatActivity {
         }
     }
 
-    private List<FullCalendar> convert(Queries queries,List<Calendar> allCalendarByDate) {
+    private List<FullCalendar> convert(Queries queries, List<Calendar> allCalendarByDate) {
         List<FullCalendar> fullCalendars = new ArrayList<>();
         for (Calendar calendar : allCalendarByDate) {
-            fullCalendars.add(new FullCalendar(queries,calendar));
+            fullCalendars.add(new FullCalendar(queries, calendar));
         }
         return fullCalendars;
     }

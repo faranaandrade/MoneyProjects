@@ -1,11 +1,8 @@
 package com.example.moneyprojects.beans;
 
-import android.database.Cursor;
-
 import com.example.moneyprojects.database.Queries;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class FullCalendar implements Serializable {
     private Long id;
@@ -14,7 +11,7 @@ public class FullCalendar implements Serializable {
     private Elementos elemento;
     private Obras obra;
 
-    public FullCalendar(Queries queries, Calendar calendar){
+    public FullCalendar(Queries queries, Calendar calendar) {
         setElemento(queries.getElemento(calendar.getElemento()));
         setObra(queries.getObra(calendar.getObra()));
         setCosto(calendar.getCosto());
@@ -22,7 +19,7 @@ public class FullCalendar implements Serializable {
         setId(calendar.getId());
     }
 
-    public FullCalendar(){
+    public FullCalendar() {
 
     }
 

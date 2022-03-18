@@ -3,12 +3,9 @@ package com.example.moneyprojects;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.moneyprojects.beans.Calendar;
 import com.example.moneyprojects.beans.FullCalendar;
-import com.example.moneyprojects.beans.Obras;
 
 import org.jetbrains.annotations.NotNull;
 

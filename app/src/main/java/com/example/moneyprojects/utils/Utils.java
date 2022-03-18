@@ -9,10 +9,10 @@ public class Utils {
     }
 
     private static void purgeCalendar(java.util.Calendar calendar) {
-        calendar.set(java.util.Calendar.MILLISECOND,0);
-        calendar.set(java.util.Calendar.SECOND,0);
-        calendar.set(java.util.Calendar.MINUTE,0);
-        calendar.set(java.util.Calendar.HOUR,0);
+        calendar.set(java.util.Calendar.MILLISECOND, 0);
+        calendar.set(java.util.Calendar.SECOND, 0);
+        calendar.set(java.util.Calendar.MINUTE, 0);
+        calendar.set(java.util.Calendar.HOUR, 0);
     }
 
     public static java.util.Calendar getPurgeCalendar() {

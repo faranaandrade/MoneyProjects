@@ -21,7 +21,7 @@ public class ObrasAdapter extends RecyclerView.Adapter<ObrasAdapter.ViewHolder> 
     private ShowEdit<Obras> showEdit;
     private WebGetter webGetter;
 
-    public ObrasAdapter(List<Obras> elementosList, ShowEdit<Obras> showEdit,WebGetter webGetter) {
+    public ObrasAdapter(List<Obras> elementosList, ShowEdit<Obras> showEdit, WebGetter webGetter) {
         this.items = elementosList;
         this.showEdit = showEdit;
         this.webGetter = webGetter;

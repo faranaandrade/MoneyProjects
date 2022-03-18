@@ -2,7 +2,7 @@ package com.example.moneyprojects.beans;
 
 import android.database.Cursor;
 
-public class Obras implements NameGetter{
+public class Obras implements NameGetter {
 
     public static final int TERMINADA = 1;
     public static final int SIN_TERMINAR = 0;
@@ -12,7 +12,7 @@ public class Obras implements NameGetter{
     private String documento;
     private Integer terminada;
 
-    public Obras(){
+    public Obras() {
 
     }
 

@@ -105,7 +105,6 @@ public class Queries {
     }
 
 
-
     @NonNull
     private <T> List<T> select(final String sql, NewItem<T> newItem, final String... args) {
         Cursor cursor = sqLiteDatabase.rawQuery(sql, args);
@@ -315,7 +314,7 @@ public class Queries {
         return 0;
     }
 
-     interface NewItem <T> {
+    interface NewItem<T> {
         T instance(Cursor cursor);
     }
 }
