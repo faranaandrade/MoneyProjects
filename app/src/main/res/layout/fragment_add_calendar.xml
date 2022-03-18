@@ -26,7 +26,7 @@
             android:paddingBottom="20dp"
             android:text="EDITAR REGISTRO"
             android:textAlignment="center"
-            android:textColor="@color/purple_200"
+            android:textColor="@color/purple_500"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -37,8 +37,8 @@
             android:layout_weight="1"
             android:paddingTop="10dp"
             android:text="Obra:"
-            android:textAlignment="center"
-            android:textColor="@color/purple_200"
+            android:textAlignment="textStart"
+            android:textColor="@color/purple_700"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -63,7 +63,7 @@
                 android:id="@+id/imageButtonObras"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@drawable/round_outline"
+                android:background="@color/purple_200"
                 android:contentDescription="delete"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_search_foreground" />
@@ -77,8 +77,8 @@
             android:layout_weight="1"
             android:paddingTop="14dp"
             android:text="Elemento:"
-            android:textAlignment="center"
-            android:textColor="@color/purple_200"
+            android:textAlignment="textStart"
+            android:textColor="@color/purple_700"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -102,7 +102,7 @@
                 android:id="@+id/imageButtonElementos"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@drawable/round_outline"
+                android:background="@color/purple_200"
                 android:contentDescription="delete"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_search_foreground" />
@@ -115,8 +115,8 @@
             android:layout_weight="1"
             android:paddingTop="14dp"
             android:text="Costo:"
-            android:textAlignment="center"
-            android:textColor="@color/purple_200"
+            android:textAlignment="textStart"
+            android:textColor="@color/purple_700"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -142,7 +142,7 @@
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:backgroundTint="@color/purple_500" />
+            app:backgroundTint="@color/purple_200" />
 
         <Button
             android:id="@+id/eliminarObra"
@@ -150,7 +150,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="ELIMINAR"
-            app:backgroundTint="@color/teal_700" />
+            android:textColor="@color/teal_700"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/teal_200" />
 
     </LinearLayout>
 

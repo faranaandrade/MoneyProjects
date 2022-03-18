@@ -1,3 +1,4 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <item name="ic_menu_save" type="drawable">@android:drawable/ic_menu_save</item>
+    <item name="ic_plus" type="drawable">@android:drawable/ic_input_add</item>
 </resources>

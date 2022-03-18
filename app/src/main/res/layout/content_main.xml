@@ -9,14 +9,14 @@
 
     <Button
         android:id="@+id/buttonHoy"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="62dp"
         android:onClick="buttonHoyAction"
         android:text="HOY"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonCalendario"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/buttonCalendario"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
@@ -32,24 +32,24 @@
 
     <Button
         android:id="@+id/buttonObras"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:onClick="buttonObrasAction"
         android:text="OBRAS"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonCalendario"
+        app:layout_constraintStart_toStartOf="@+id/buttonCalendario"
         app:layout_constraintTop_toBottomOf="@+id/buttonCalendario" />
 
     <Button
         android:id="@+id/buttonElementos"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:onClick="buttonElementosAction"
         android:text="ELEMENTOS"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonCalendario"
+        app:layout_constraintStart_toStartOf="@+id/buttonCalendario"
         app:layout_constraintTop_toBottomOf="@+id/buttonObras" />
 
     <TextView
@@ -58,8 +58,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="FEYEL CONTROL DIARIO"
-        android:textColor="@color/teal_700"
-        android:textSize="24sp"
+        android:textAlignment="center"
+        android:textColor="@color/purple_200"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

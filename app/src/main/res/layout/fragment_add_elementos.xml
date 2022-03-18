@@ -38,7 +38,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:backgroundTint="@color/teal_700" />
+                app:backgroundTint="@color/purple_200" />
 
             <Button
                 android:id="@+id/addCuadrilla"
@@ -52,7 +52,7 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:backgroundTint="@color/teal_700" />
+                app:backgroundTint="@color/purple_200" />
         </LinearLayout>
 
     </LinearLayout>
