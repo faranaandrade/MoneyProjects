@@ -3,6 +3,7 @@ package com.example.moneyprojects;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -19,11 +20,13 @@ public class ObrasAdapter extends RecyclerView.Adapter<ObrasAdapter.ViewHolder> 
 
     private List<Obras> items;
     private ShowEdit<Obras> showEdit;
+    private ShowEdit<Obras> showCostos;
     private WebGetter webGetter;
 
-    public ObrasAdapter(List<Obras> elementosList, ShowEdit<Obras> showEdit, WebGetter webGetter) {
+    public ObrasAdapter(List<Obras> elementosList, ShowEdit<Obras> showEdit, ShowEdit<Obras> showCostos,WebGetter webGetter) {
         this.items = elementosList;
         this.showEdit = showEdit;
+        this.showCostos = showCostos;
         this.webGetter = webGetter;
     }
 
@@ -59,6 +62,12 @@ public class ObrasAdapter extends RecyclerView.Adapter<ObrasAdapter.ViewHolder> 
                 }
             });
         }
+        holder.buttonCosto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showCostos.show(obras);
+            }
+        });
     }
 
     @Override
@@ -69,11 +78,13 @@ public class ObrasAdapter extends RecyclerView.Adapter<ObrasAdapter.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
         public ImageButton buttonDocumento;
+        public Button buttonCosto;
 
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.textViewName);
             buttonDocumento = itemView.findViewById(R.id.imageButtonDocumentos);
+            buttonCosto = itemView.findViewById(R.id.buttonCosto);
         }
 
     }

@@ -1,51 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/border">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="3dp"
+        android:orientation="horizontal"
         android:paddingTop="2dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/nameElemento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="24dp"
-
-            android:text="Tipo"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
+        android:paddingBottom="3dp">
 
         <TextView
             android:id="@+id/textViewNameClasificacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-
             android:paddingLeft="24dp"
-            android:text="Clasificacion"
-            android:textAlignment="center"
+
+            android:text="Tipo"
+            android:textAlignment="textStart"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="34sp" />
 
         <TextView
-            android:id="@+id/textViewNameObra"
-            android:layout_width="wrap_content"
+            android:id="@+id/textViewNameGasto"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
 
             android:paddingLeft="24dp"
-            android:text="obra"
-            android:textAlignment="center"
+            android:text="Clasificacion"
+            android:textAlignment="textEnd"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="34sp"
+            tools:text="$4545" />
 
     </LinearLayout>
 

@@ -91,6 +91,17 @@ public class Queries {
         return select("SELECT * FROM " + DataBase.ELEMENTOS_TABLE + " ORDER BY " + DataBase.TIPO_FIELD, newItem);
     }
 
+    public List<Calendar> getAllCalendarByObra(Long id) {
+        NewItem<Calendar> newItem = new NewItem<Calendar>() {
+
+            @Override
+            public Calendar instance(Cursor cursor) {
+                return new Calendar(cursor);
+            }
+        };
+        return select("SELECT * FROM " + DataBase.CALENDAR_TABLE + " WHERE " + DataBase.OBRA_FIELD + " = ? ORDER BY " + DataBase.ELEMENTO_FIELD, newItem, id.toString());
+    }
+
     public List<Calendar> getAllCalendarByDate(java.util.Calendar calendar) {
         Long purgeTime = calendar.getTimeInMillis();
         System.out.println("filter date:" + new Date(purgeTime));
@@ -101,7 +112,7 @@ public class Queries {
                 return new Calendar(cursor);
             }
         };
-        return select("SELECT * FROM " + DataBase.CALENDAR_DATE + " WHERE " + DataBase.FECHA_FIELD + " = ? ", newItem, purgeTime.toString());
+        return select("SELECT * FROM " + DataBase.CALENDAR_TABLE + " WHERE " + DataBase.FECHA_FIELD + " = ? ", newItem, purgeTime.toString());
     }
 
 
@@ -166,7 +177,7 @@ public class Queries {
     private void updateCalendar(final Calendar item) {
         String[] ids = new String[1];
         ids[0] = item.getId().toString();
-        sqLiteDatabase.update(DataBase.CALENDAR_DATE, fillCalendarContentValues(item), "ID = ?", ids);
+        sqLiteDatabase.update(DataBase.CALENDAR_TABLE, fillCalendarContentValues(item), "ID = ?", ids);
     }
 
     @NonNull
@@ -214,7 +225,7 @@ public class Queries {
 
     private void saveCalendar(final Calendar item) {
         if (sqLiteDatabase != null) {
-            Long id = sqLiteDatabase.insert(DataBase.CALENDAR_DATE, null, fillCalendarContentValues(item));
+            Long id = sqLiteDatabase.insert(DataBase.CALENDAR_TABLE, null, fillCalendarContentValues(item));
             item.setId(id);
         }
     }
@@ -258,7 +269,7 @@ public class Queries {
         if (id != null) {
             String[] ids = new String[1];
             ids[0] = id.toString();
-            sqLiteDatabase.delete(DataBase.CALENDAR_DATE, DataBase.ELEMENTO_FIELD + "=?", ids);
+            sqLiteDatabase.delete(DataBase.CALENDAR_TABLE, DataBase.ELEMENTO_FIELD + "=?", ids);
         }
     }
 
@@ -279,7 +290,7 @@ public class Queries {
         if (id != null) {
             String[] ids = new String[1];
             ids[0] = id.toString();
-            sqLiteDatabase.delete(DataBase.CALENDAR_DATE, DataBase.OBRA_FIELD + "=?", ids);
+            sqLiteDatabase.delete(DataBase.CALENDAR_TABLE, DataBase.OBRA_FIELD + "=?", ids);
         }
     }
 
@@ -295,7 +306,7 @@ public class Queries {
         if (id != null) {
             String[] ids = new String[1];
             ids[0] = id.toString();
-            sqLiteDatabase.delete(DataBase.CALENDAR_DATE, DataBase.ID_FIELD + "=?", ids);
+            sqLiteDatabase.delete(DataBase.CALENDAR_TABLE, DataBase.ID_FIELD + "=?", ids);
         }
     }
 

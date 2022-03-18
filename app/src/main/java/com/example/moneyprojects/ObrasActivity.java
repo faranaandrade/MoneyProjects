@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ObrasActivity extends AppCompatActivity {
 
+    public static final String OBRA = "OBRA";
     private List<Obras> allObrasSinTerminar;
     private List<Obras> allObrasTerminadas;
     private ObrasAdapter obrasTerminadasAdapter;
@@ -96,11 +97,19 @@ public class ObrasActivity extends AppCompatActivity {
             }
         });
 
-        obrasTerminadasAdapter = new ObrasAdapter(allObrasTerminadas, showEdit, webGetter);
+        ShowEdit<Obras> showCosto = new ShowEdit<Obras>() {
+            @Override
+            public void show(Obras obras) {
+                Intent intent = new Intent(ObrasActivity.this, GastosActivity.class);
+                intent.putExtra(OBRA, obras);
+                startActivity(intent);
+            }
+        };
+        obrasTerminadasAdapter = new ObrasAdapter(allObrasTerminadas, showEdit, showCosto, webGetter);
         listViewGruas.setAdapter(obrasTerminadasAdapter);
         listViewGruas.setLayoutManager(new LinearLayoutManager(this));
 
-        obrasSinTerminarAdapter = new ObrasAdapter(allObrasSinTerminar, showEdit, webGetter);
+        obrasSinTerminarAdapter = new ObrasAdapter(allObrasSinTerminar, showEdit, showCosto, webGetter);
         listViewCuadrilla.setAdapter(obrasSinTerminarAdapter);
         listViewCuadrilla.setLayoutManager(new LinearLayoutManager(this));
     }

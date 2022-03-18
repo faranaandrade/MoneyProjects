@@ -8,7 +8,7 @@ public class DataBase extends SQLiteOpenHelper {
 
     public static final String ELEMENTOS_TABLE = "ELEMENTOS";
     public static final String OBRAS_TABLE = "OBRAS";
-    public static final String CALENDAR_DATE = "DATE";
+    public static final String CALENDAR_TABLE = "DATE";
 
     public static final String ID_FIELD = "ID";
     public static final String CLASIFICACION_FIELD = "clasificacion";
@@ -30,7 +30,7 @@ public class DataBase extends SQLiteOpenHelper {
 
     String obrasTable = "CREATE TABLE " + OBRAS_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME_FIELD + " TEXT, " + DOCUMENTO_FIELD + " TEXT, " + FINISHED_FIELD + " NUMERIC)";
 
-    String dateTable = "CREATE TABLE " + CALENDAR_DATE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " + OBRA_FIELD + " INTEGER, " + ELEMENTO_FIELD + " INTEGER, " + FECHA_FIELD + " NUMERIC, " + COSTO_FIELD + " NUMERIC)";
+    String dateTable = "CREATE TABLE " + CALENDAR_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " + OBRA_FIELD + " INTEGER, " + ELEMENTO_FIELD + " INTEGER, " + FECHA_FIELD + " NUMERIC, " + COSTO_FIELD + " NUMERIC)";
 
     public DataBase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -49,7 +49,7 @@ public class DataBase extends SQLiteOpenHelper {
         System.out.println("new" + newVersion);
         db.execSQL("DROP TABLE IF EXISTS " + OBRAS_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + ELEMENTOS_TABLE);
-        db.execSQL("DROP TABLE IF EXISTS " + CALENDAR_DATE);
+        db.execSQL("DROP TABLE IF EXISTS " + CALENDAR_TABLE);
         onCreate(db);
         switch (oldVersion) {
             case 1:

@@ -46,12 +46,8 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
     public void onBindViewHolder(CalendarAdapter.ViewHolder holder, int position) {
         FullCalendar calendar = items.get(position);
         holder.clasificacion.setText(calendar.getElemento().getClasificacion());
-        if (calendar.getObra() != null) {
-            holder.obra.setText(calendar.getObra().getName());
-        } else {
-            holder.obra.setText("- sin obra -");
-        }
-        holder.tipo.setText(calendar.getElemento().getTipo());
+        holder.obra.setText(calendar.getObra().getName());
+        holder.nameElemento.setText(calendar.getElemento().getName());
     }
 
     @Override
@@ -62,13 +58,13 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView obra;
         public TextView clasificacion;
-        public TextView tipo;
+        public TextView nameElemento;
 
         public ViewHolder(View itemView) {
             super(itemView);
             obra = itemView.findViewById(R.id.textViewNameObra);
             clasificacion = itemView.findViewById(R.id.textViewNameClasificacion);
-            tipo = itemView.findViewById(R.id.textViewNameTipo);
+            nameElemento = itemView.findViewById(R.id.nameElemento);
         }
 
     }
