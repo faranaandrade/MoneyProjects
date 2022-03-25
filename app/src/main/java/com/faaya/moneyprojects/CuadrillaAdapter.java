@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.faaya.moneyprojects.beans.Elementos;
+import com.faaya.moneyprojects.utils.Utils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -45,8 +46,8 @@ public class CuadrillaAdapter extends RecyclerView.Adapter<CuadrillaAdapter.View
     @Override
     public void onBindViewHolder(CuadrillaAdapter.ViewHolder holder, int position) {
         Elementos elementos = elementosList.get(position);
-        holder.name.setText(elementos.getName());
-        holder.clasificacion.setText(elementos.getClasificacion());
+        holder.name.setText(Utils.cutString(elementos.getName(), 31));
+        holder.clasificacion.setText(Utils.cutString(elementos.getClasificacion(), 15));
         holder.costo.setText("$" + elementos.getCosto().toString());
         if (elementos.getNomina().intValue() == Elementos.DESTAJO) {
             holder.pago.setText("DESTAJO");

@@ -6,11 +6,9 @@
     android:background="@drawable/border">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="3dp"
-        android:paddingTop="2dp"
-        android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textViewNameTipo"
@@ -23,35 +21,44 @@
             android:textColor="@color/white"
             android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/textViewClasificacion"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="20dp"
-            android:text="clasificacion1"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:orientation="horizontal"
+            android:paddingTop="2dp"
+            android:layout_marginLeft="8dp"
+            android:paddingBottom="3dp">
 
-        <TextView
-            android:id="@+id/textViewPago"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="N"
-            android:paddingRight="20dp"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/textViewClasificacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="20dp"
+                android:text="clasificacion1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/textViewCosto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$10.54"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/textViewPago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="20dp"
+                android:text="DESTAJO"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
 
+            <TextView
+                android:id="@+id/textViewCosto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$10.54"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

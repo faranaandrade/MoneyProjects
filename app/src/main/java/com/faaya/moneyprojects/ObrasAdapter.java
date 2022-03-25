@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.faaya.moneyprojects.beans.Obras;
+import com.faaya.moneyprojects.utils.Utils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -51,7 +52,7 @@ public class ObrasAdapter extends RecyclerView.Adapter<ObrasAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ObrasAdapter.ViewHolder holder, int position) {
         Obras obras = items.get(position);
-        holder.name.setText(obras.getName());
+        holder.name.setText(Utils.cutString(obras.getName(), 21));
         if (obras.getDocumento() == null || obras.getDocumento().isEmpty()) {
             holder.buttonDocumento.setVisibility(View.GONE);
         } else {

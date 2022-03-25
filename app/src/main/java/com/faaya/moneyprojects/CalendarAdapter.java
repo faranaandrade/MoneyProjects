@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.faaya.moneyprojects.beans.FullCalendar;
+import com.faaya.moneyprojects.utils.Utils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -45,9 +46,10 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
     @Override
     public void onBindViewHolder(CalendarAdapter.ViewHolder holder, int position) {
         FullCalendar calendar = items.get(position);
-        holder.clasificacion.setText(calendar.getElemento().getClasificacion());
-        holder.obra.setText(calendar.getObra().getName());
-        holder.nameElemento.setText(calendar.getElemento().getName());
+        holder.nameElemento.setText(Utils.cutString(calendar.getElemento().getName(), 31));
+        holder.clasificacion.setText(Utils.cutString(calendar.getElemento().getClasificacion(),16));
+        holder.obra.setText(Utils.cutString(calendar.getObra().getName(), 16));
+
     }
 
     @Override

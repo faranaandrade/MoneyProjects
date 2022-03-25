@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_alignParentEnd="true"
-    tools:context=".HoyActivity">
+    tools:context=".HoyListActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,16 +25,6 @@
             android:textAlignment="center"
             android:textColor="@color/teal_700"
             android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textViewFecha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="06/03/2022"
-            android:textAlignment="center"
-            android:textColor="@color/teal_700"
-            android:textSize="16sp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView

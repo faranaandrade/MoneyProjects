@@ -37,6 +37,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="nombre"
+            android:textColor="@color/design_default_color_primary"
+            android:textColorHint="@color/purple_200"
             android:inputType="textPersonName" />
 
         <EditText
@@ -46,6 +48,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="clasificación"
+            android:textColor="@color/design_default_color_primary"
+            android:textColorHint="@color/purple_200"
             android:inputType="textPersonName" />
 
         <EditText
@@ -55,6 +59,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="costo semanal"
+            android:textColor="@color/design_default_color_primary"
+            android:textColorHint="@color/purple_200"
             android:inputType="number" />
 
         <Switch
@@ -89,7 +95,7 @@
             android:layout_weight="1"
             android:text="ELIMINAR"
             android:textColor="@color/teal_700"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:backgroundTint="@color/teal_200" />
 

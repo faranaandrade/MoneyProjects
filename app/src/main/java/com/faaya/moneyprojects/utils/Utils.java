@@ -16,4 +16,11 @@ public class Utils {
         purgeCalendar(calendar);
         return calendar;
     }
+
+    public static String cutString(String fullText, int limit) {
+        if (fullText.length() > limit) {
+            return fullText.substring(0, limit - 3) + "...";
+        }
+        return fullText;
+    }
 }

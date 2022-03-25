@@ -6,47 +6,53 @@
     android:background="@drawable/border">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="3dp"
-        android:paddingTop="2dp"
-        android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/nameElemento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="24dp"
+            android:paddingLeft="8dp"
 
             android:text="Tipo"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/textViewNameClasificacion"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingTop="2dp"
+            android:paddingBottom="3dp">
 
-            android:paddingLeft="24dp"
-            android:text="Clasificacion"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/textViewNameClasificacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
 
-        <TextView
-            android:id="@+id/textViewNameObra"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+                android:paddingLeft="8dp"
+                android:text="Clasificacion"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
 
-            android:paddingLeft="24dp"
-            android:text="obra"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/textViewNameObra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
 
+                android:paddingLeft="24dp"
+                android:text="obra"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_main">
 
@@ -14,6 +15,7 @@
         android:layout_marginTop="62dp"
         android:onClick="buttonHoyAction"
         android:text="HOY"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/buttonCalendario"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/buttonCalendario"
@@ -26,6 +28,7 @@
         android:layout_marginTop="32dp"
         android:onClick="buttonCalendarioAction"
         android:text="CALENDARIO"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonHoy" />
@@ -37,6 +40,7 @@
         android:layout_marginTop="32dp"
         android:onClick="buttonObrasAction"
         android:text="OBRAS"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/buttonCalendario"
         app:layout_constraintStart_toStartOf="@+id/buttonCalendario"
         app:layout_constraintTop_toBottomOf="@+id/buttonCalendario" />
@@ -48,6 +52,7 @@
         android:layout_marginTop="32dp"
         android:onClick="buttonElementosAction"
         android:text="ELEMENTOS"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/buttonCalendario"
         app:layout_constraintStart_toStartOf="@+id/buttonCalendario"
         app:layout_constraintTop_toBottomOf="@+id/buttonObras" />
