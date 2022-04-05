@@ -21,7 +21,7 @@ public class Queries {
     private SQLiteDatabase sqLiteDatabase;
 
     public Queries(final Context context) {
-        DataBase dataBase = new DataBase(context, DataBase.SCHEMA, null, 10);
+        DataBase dataBase = new DataBase(context, DataBase.SCHEMA, null, 12);
         sqLiteDatabase = dataBase.getWritableDatabase();
     }
 
@@ -187,6 +187,7 @@ public class Queries {
         contentValues.put(DataBase.COSTO_FIELD, item.getCosto());
         contentValues.put(DataBase.CLASIFICACION_FIELD, item.getClasificacion());
         contentValues.put(DataBase.TIPO_FIELD, item.getTipo());
+        contentValues.put(DataBase.HIDE_FIELD, item.getHide());
         return contentValues;
     }
 

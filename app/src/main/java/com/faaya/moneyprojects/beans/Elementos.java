@@ -6,6 +6,8 @@ public class Elementos implements NameGetter {
     public static final String GRUA = "GRUA";
     public static final int DESTAJO = 0;
     public static final int NOMINA = 1;
+    public static final int ACTIVE = 0;
+    public static final int HIDE = 1;
     public static final String CUADRILLA = "CUADRILLA";
     private Long id;
     private String name;
@@ -13,6 +15,7 @@ public class Elementos implements NameGetter {
     private String clasificacion;
     private String tipo;
     private Integer nomina;
+    private Integer hide;
 
     public Elementos() {
 
@@ -25,6 +28,7 @@ public class Elementos implements NameGetter {
         setCosto(cursor.getDouble(3));
         setTipo(cursor.getString(4));
         setNomina(cursor.getInt(5));
+        setHide(cursor.getInt(6));
     }
 
     public Long getId() {
@@ -73,5 +77,13 @@ public class Elementos implements NameGetter {
 
     public void setNomina(Integer nomina) {
         this.nomina = nomina;
+    }
+
+    public Integer getHide() {
+        return hide;
+    }
+
+    public void setHide(Integer hide) {
+        this.hide = hide;
     }
 }

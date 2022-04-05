@@ -45,15 +45,13 @@ public class ElementosActivity extends AppCompatActivity {
 
                     @Override
                     public void delete(Long id) {
-                        queries.deleteAllReferenceAndElements(id.intValue());
-                        allCuadrillas.remove(elementEdit);
-                        cuadrillaAdapter.notifyDataSetChanged();
+                        showCuadrillaDeleteAlert(id, queries, elementEdit);
                     }
                 };
                 AddCuadrillaFragment.newInstance("", elementEdit, cuadrillaManager).show(getSupportFragmentManager(), "fragment_edit_cuadrilla");
             }
         };
-        cuadrillaAdapter = new CuadrillaAdapter(allCuadrillas, showEditCuadrilla);
+        cuadrillaAdapter = new CuadrillaAdapter(allCuadrillas, showEditCuadrilla, getResources().getColor(R.color.gray_1), getResources().getColor(R.color.teal_700));
         listViewCuadrilla.setAdapter(cuadrillaAdapter);
         listViewCuadrilla.setLayoutManager(new LinearLayoutManager(this));
 
@@ -77,15 +75,13 @@ public class ElementosActivity extends AppCompatActivity {
 
                     @Override
                     public void delete(Long id) {
-                        queries.deleteAllReferenceAndElements(id.intValue());
-                        allGruas.remove(elementEdit);
-                        gruaAdapter.notifyDataSetChanged();
+                        showGruaDeleteAlert(id, queries, elementEdit);
                     }
                 };
                 AddGruasFragment.newInstance("", elementEdit, gruasManager).show(getSupportFragmentManager(), "fragment_edit_grua");
             }
         };
-        gruaAdapter = new GruaAdapter(allGruas, showEditGrua);
+        gruaAdapter = new GruaAdapter(allGruas, showEditGrua, getResources().getColor(R.color.gray_1), getResources().getColor(R.color.teal_700));
         listViewGruas.setAdapter(gruaAdapter);
         listViewGruas.setLayoutManager(new LinearLayoutManager(this));
 
@@ -113,4 +109,30 @@ public class ElementosActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void showGruaDeleteAlert(Long id, Queries queries, Elementos elementEdit) {
+        AddDeleteFragment fragment = AddDeleteFragment.newInstance("", new DeleteManager() {
+            @Override
+            public void delete() {
+                queries.deleteAllReferenceAndElements(id.intValue());
+                allGruas.remove(elementEdit);
+                gruaAdapter.notifyDataSetChanged();
+            }
+        });
+        fragment.show(getSupportFragmentManager(), "fragment_delete_elementos");
+    }
+
+    private void showCuadrillaDeleteAlert(Long id, Queries queries, Elementos elementEdit) {
+        AddDeleteFragment fragment = AddDeleteFragment.newInstance("", new DeleteManager() {
+            @Override
+            public void delete() {
+                queries.deleteAllReferenceAndElements(id.intValue());
+                allCuadrillas.remove(elementEdit);
+                cuadrillaAdapter.notifyDataSetChanged();
+            }
+        });
+        fragment.show(getSupportFragmentManager(), "fragment_delete_elementos2");
+    }
+
+
 }

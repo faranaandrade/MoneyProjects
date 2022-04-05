@@ -75,14 +75,20 @@ public class ObrasActivity extends AppCompatActivity {
 
                     @Override
                     public void delete(Long id) {
-                        queries.deleteAllReferenceAndObras(id.intValue());
-                        if (obraEdit.getTerminada().intValue() == Obras.TERMINADA) {
-                            allObrasTerminadas.remove(obraEdit);
-                        } else {
-                            allObrasSinTerminar.remove(obraEdit);
-                        }
-                        obrasTerminadasAdapter.notifyDataSetChanged();
-                        obrasSinTerminarAdapter.notifyDataSetChanged();
+                        AddDeleteFragment fragment = AddDeleteFragment.newInstance("", new DeleteManager() {
+                            @Override
+                            public void delete() {
+                                queries.deleteAllReferenceAndObras(id.intValue());
+                                if (obraEdit.getTerminada().intValue() == Obras.TERMINADA) {
+                                    allObrasTerminadas.remove(obraEdit);
+                                } else {
+                                    allObrasSinTerminar.remove(obraEdit);
+                                }
+                                obrasTerminadasAdapter.notifyDataSetChanged();
+                                obrasSinTerminarAdapter.notifyDataSetChanged();
+                            }
+                        });
+                        fragment.show(getSupportFragmentManager(), "fragment_delete_obra");
                     }
                 };
                 AddObrasFragment.newInstance("", obraEdit, manager).show(getSupportFragmentManager(), "fragment_edit_obra");

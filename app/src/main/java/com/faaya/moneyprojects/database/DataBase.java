@@ -23,6 +23,7 @@ public class DataBase extends SQLiteOpenHelper {
     public static final String NOMINA_FIELD = "nomina";
     public static final String GRUA_TIPO = "GRUA";
     public static final String CUADRILLA_TIPO = "CUADRILLA";
+    public static final String HIDE_FIELD = "hide";
 
     public static String SCHEMA = "MONEYPROJECTQUERY";
 
@@ -45,15 +46,17 @@ public class DataBase extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        System.out.println("old" + oldVersion);
-        System.out.println("new" + newVersion);
-        db.execSQL("DROP TABLE IF EXISTS " + OBRAS_TABLE);
-        db.execSQL("DROP TABLE IF EXISTS " + ELEMENTOS_TABLE);
-        db.execSQL("DROP TABLE IF EXISTS " + CALENDAR_TABLE);
-        onCreate(db);
-        switch (oldVersion) {
-            case 1:
-                break;
+        System.out.println("old:" + oldVersion);
+        System.out.println("new:" + newVersion);
+        if (newVersion <= 10) {
+            db.execSQL("DROP TABLE IF EXISTS " + OBRAS_TABLE);
+            db.execSQL("DROP TABLE IF EXISTS " + ELEMENTOS_TABLE);
+            db.execSQL("DROP TABLE IF EXISTS " + CALENDAR_TABLE);
+            onCreate(db);
+        }
+        if (newVersion >= 12) {
+            System.out.println("alter");
+            db.execSQL("ALTER TABLE " + ELEMENTOS_TABLE + " ADD COLUMN " + HIDE_FIELD + " INTEGER");
         }
     }
 }

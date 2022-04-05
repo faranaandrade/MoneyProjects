@@ -72,6 +72,15 @@
             android:text="Nómina"
             android:textColor="@color/purple_500" />
 
+        <Switch
+            android:id="@+id/switchHide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:text="Desactivado"
+            android:textColor="@color/purple_500" />
+
         <Button
             android:id="@+id/buttonAddCuadrilla"
             android:layout_width="match_parent"

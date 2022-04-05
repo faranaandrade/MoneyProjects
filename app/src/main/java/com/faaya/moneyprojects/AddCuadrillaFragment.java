@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.faaya.moneyprojects.beans.Elementos;
 import com.google.android.material.snackbar.Snackbar;
@@ -47,8 +48,11 @@ public class AddCuadrillaFragment extends DialogFragment {
         EditText nombre = view.findViewById(R.id.editTextNombre);
         EditText clasificacion = view.findViewById(R.id.editTextClasificacion);
         Switch nomina = view.findViewById(R.id.switchNomina);
+        Switch switchHide = view.findViewById(R.id.switchHide);
         Button okButton = view.findViewById(R.id.buttonAddCuadrilla);
         Button eliminarCuadrillaButton = view.findViewById(R.id.eliminarCuadrilla);
+        TextView titulo = view.findViewById(R.id.textView3);
+
 
         if (elementEdit != null) {
             costo.setText(elementEdit.getCosto().toString());
@@ -57,10 +61,15 @@ public class AddCuadrillaFragment extends DialogFragment {
             if (elementEdit.getNomina().intValue() == Elementos.NOMINA) {
                 nomina.setChecked(true);
             }
+            if (elementEdit.getHide().intValue() == Elementos.HIDE) {
+                switchHide.setChecked(true);
+            }
             okButton.setText("EDITAR");
             eliminarCuadrillaButton.setVisibility(View.VISIBLE);
+            titulo.setText("EDITAR CUADRILLA");
         } else {
             eliminarCuadrillaButton.setVisibility(View.GONE);
+            titulo.setText("AGREGAR CUADRILLA");
         }
 
         okButton.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +89,13 @@ public class AddCuadrillaFragment extends DialogFragment {
                 } else {
                     elementEdit.setNomina(Elementos.DESTAJO);
                 }
+
+                if (switchHide.isChecked()) {
+                    elementEdit.setHide(Elementos.HIDE);
+                } else {
+                    elementEdit.setHide(Elementos.ACTIVE);
+                }
+
                 if (isValid(elementEdit)) {
                     manager.add(elementEdit);
                     dismiss();

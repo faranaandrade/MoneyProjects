@@ -3,6 +3,7 @@ package com.faaya.moneyprojects;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.faaya.moneyprojects.beans.Elementos;
@@ -18,11 +19,15 @@ import androidx.recyclerview.widget.RecyclerView;
 public class GruaAdapter extends RecyclerView.Adapter<GruaAdapter.ViewHolder> {
 
     private List<Elementos> elementosList;
+    private int gray;
+    private int active;
     private ShowEdit<Elementos> showEdit;
 
-    public GruaAdapter(List<Elementos> elementosList, ShowEdit<Elementos> showEdit) {
+    public GruaAdapter(List<Elementos> elementosList, ShowEdit<Elementos> showEdit, int gray, int active) {
         this.showEdit = showEdit;
         this.elementosList = elementosList;
+        this.gray = gray;
+        this.active = active;
     }
 
     @NonNull
@@ -49,6 +54,11 @@ public class GruaAdapter extends RecyclerView.Adapter<GruaAdapter.ViewHolder> {
         holder.name.setText(Utils.cutString(elementos.getName(), 31));
         holder.clasificacion.setText(Utils.cutString(elementos.getClasificacion(), 25));
         holder.costo.setText("$" + elementos.getCosto().toString());
+        if (elementos.getHide().intValue() == Elementos.HIDE) {
+            holder.relativeLayout.setBackgroundColor(gray);
+        } else {
+            holder.relativeLayout.setBackgroundColor(active);
+        }
     }
 
     @Override
@@ -60,12 +70,14 @@ public class GruaAdapter extends RecyclerView.Adapter<GruaAdapter.ViewHolder> {
         public TextView name;
         public TextView clasificacion;
         public TextView costo;
+        public RelativeLayout relativeLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.textViewName);
             clasificacion = itemView.findViewById(R.id.textViewClasificacion);
             costo = itemView.findViewById(R.id.textViewCosto);
+            relativeLayout = itemView.findViewById(R.id.relativeLayout);
         }
 
     }

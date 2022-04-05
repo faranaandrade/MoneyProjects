@@ -3,6 +3,7 @@ package com.faaya.moneyprojects;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.faaya.moneyprojects.beans.Elementos;
@@ -19,10 +20,14 @@ public class CuadrillaAdapter extends RecyclerView.Adapter<CuadrillaAdapter.View
 
     private List<Elementos> elementosList;
     private ShowEdit<Elementos> showEdit;
+    private int gray;
+    private int active;
 
-    public CuadrillaAdapter(List<Elementos> elementosList, ShowEdit<Elementos> showEdit) {
+    public CuadrillaAdapter(List<Elementos> elementosList, ShowEdit<Elementos> showEdit, int gray, int active) {
         this.elementosList = elementosList;
         this.showEdit = showEdit;
+        this.gray = gray;
+        this.active = active;
     }
 
     @NonNull
@@ -54,6 +59,11 @@ public class CuadrillaAdapter extends RecyclerView.Adapter<CuadrillaAdapter.View
         } else {
             holder.pago.setText("NOMINA");
         }
+        if (elementos.getHide().intValue() == Elementos.HIDE) {
+            holder.relativeLayout.setBackgroundColor(gray);
+        } else {
+            holder.relativeLayout.setBackgroundColor(active);
+        }
 
     }
 
@@ -67,6 +77,7 @@ public class CuadrillaAdapter extends RecyclerView.Adapter<CuadrillaAdapter.View
         public TextView clasificacion;
         public TextView costo;
         public TextView pago;
+        public RelativeLayout relativeLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -74,6 +85,7 @@ public class CuadrillaAdapter extends RecyclerView.Adapter<CuadrillaAdapter.View
             clasificacion = itemView.findViewById(R.id.textViewClasificacion);
             costo = itemView.findViewById(R.id.textViewCosto);
             pago = itemView.findViewById(R.id.textViewPago);
+            relativeLayout = itemView.findViewById(R.id.relativeLayout);
         }
 
     }

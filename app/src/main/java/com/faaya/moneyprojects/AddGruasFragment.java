@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import com.faaya.moneyprojects.beans.Elementos;
 import com.google.android.material.snackbar.Snackbar;
@@ -45,16 +47,23 @@ public class AddGruasFragment extends DialogFragment {
         EditText nombre = view.findViewById(R.id.editTextNombreGrua);
         EditText clasificacion = view.findViewById(R.id.editTextClasificacionGrua);
         Button okButton = view.findViewById(R.id.buttonAddGrua);
+        Switch switchHide = view.findViewById(R.id.switchHide);
         Button eliminarGruaButton = view.findViewById(R.id.eliminarGrua);
+        TextView textViewEditarGrua = view.findViewById(R.id.textViewEditarGrua);
 
         if (elementEdit != null) {
             costo.setText(elementEdit.getCosto().toString());
             nombre.setText(elementEdit.getName());
             clasificacion.setText(elementEdit.getClasificacion());
+            if (elementEdit.getHide().intValue() == Elementos.HIDE) {
+                switchHide.setChecked(true);
+            }
             okButton.setText("EDITAR");
             eliminarGruaButton.setVisibility(View.VISIBLE);
+            textViewEditarGrua.setText("EDITAR GRUA");
         } else {
             eliminarGruaButton.setVisibility(View.GONE);
+            textViewEditarGrua.setText("AGREGAR GRUA");
         }
 
 
@@ -70,6 +79,12 @@ public class AddGruasFragment extends DialogFragment {
                     elementEdit.setCosto(Double.parseDouble(costo.getText().toString()));
                 }
                 elementEdit.setTipo(Elementos.GRUA);
+
+                if (switchHide.isChecked()) {
+                    elementEdit.setHide(Elementos.HIDE);
+                } else {
+                    elementEdit.setHide(Elementos.ACTIVE);
+                }
 
                 if (isValid(elementEdit)) {
                     manager.add(elementEdit);
